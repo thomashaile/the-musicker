@@ -4,19 +4,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Musicker</title>
+    <title>Albums</title>
     <link rel="stylesheet" href="./style.css">
-    <script type="module">
+    <!--script type="module">
         import { init } from './app/init.js'; window.onload = init;
-    </script>
+    </!--script-->
+    <script src="./controller.js"></script>
     <script src="./controller.js"></script>
 </head>
 
 <body>
     <div id="main">
         <div id="header">
-            <div id="menu"> <a href="mediatypes.html">MEDIATYPE </a> <a href="tracks.html">ALL TRACKS</a><a href="playlists.html">PLAYLISTS </a> <a href="artists.html">ARTISTS</a> <a href="albums.html" id="albumslink">ALBUMS</a>
-                <a href="#">HOME</a>
+            <div id="menu"> <a href="mediatypes.html">MEDIATYPE </a> <a href="tracks.html">ALL TRACKS</a> <a href="playlists.html">PLAYLISTS </a> <a href="artists.html">ARTISTS</a> <a href="#">ALBUMS</a>
+                <a href="index.html">HOME</a>
             </div>
             <div id="header-Bottom">
                 <div id="logoBlock">
@@ -26,7 +27,7 @@
 
                 <div id="searchBlock">
                     <div id="searchform">
-                        <label for="search"><h3><i>Search Track</i></h3></label><input type="text" id="trackname"><button id="primary-button" type="submit">Search</button>
+                        <label for="search"><h3><i>Search Album</i></h3></label><input type="text" id="albumid"><button id="primary-button" type="submit">Search</button>
                     </div>
                 </div>
             </div>
@@ -35,36 +36,31 @@
 
     <div id="mainCont">
         <!--first col music list-->
-        <div id="leftCol">
+        <div id="leftColalbum">
             <div id="playListTop">
-                <h3>All Songs</h3>
+                <h3>All Albums</h3>
             </div>
             <div id="playListBody">
-                <div class="head">
-                    <p class="left">No</p>
-                    <p class="centr">Song Name</p>
-                    <p class="right">Artist Name</p>
-                </div>
+                <div id="playListDark"></div>
             </div>
         </div>
-        <!--second col playlists-->
-        <div id="centrCol">
-            <div id="playListTop">
-                <h3>Playlists</h3>
-            </div>
-            <div id="albmBlock">
-                <div id="albmBox">
-                    <!--playllists-->
-                </div>
-            </div>
-        </div>
+
         <!--third col-->
         <div id="rightCol">
             <div id="videoBlock">
                 <div id="playListTop">
-                    <h3>List of Albums</h3>
+                    <h3>Albums By Same Artist </h3>
                 </div>
                 <div id="videoBlockBody">
+                    <h3>choose album from the left to see..</h3>
+                </div>
+            </div>
+            <div id="videoBlock">
+                <div id="playListTop">
+                    <h3>Tracks On This Album</h3>
+                </div>
+                <div id="videoBlockBody1">
+                    <h3>choose album from the above to see</h3>
                 </div>
             </div>
         </div>
@@ -76,18 +72,21 @@
         <div class="rights">Designed by: ThomasH</div>
     </div>
 </body>
-<!--script src="./app/init.js"></!--script-->
+
 <script>
     //event listeners for artist form
     document.getElementById("primary-button")
         .addEventListener('click', (e) => {
-            const trackId = document.getElementById('trackname').value;
+            const trackId = document.getElementById('albumid').value;
             if (!trackId) {
                 alert("track name is required");
             }
-            trackSearch(trackId);
+            albumSearch(trackId);
             e.preventDefault()
         });
+
+    listAlbums();
 </script>
+
 
 </html>
