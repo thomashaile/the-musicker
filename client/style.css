@@ -1,3 +1,533 @@
 body {
-  background-color: peachpuff;
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #080808;
+    background-color: rgba(0, 68, 255, 0.623);
+    background-repeat: repeat-x;
+    background-position: top;
+}
+
+#album-td {
+    width: 60%;
+    text-align: center;
+}
+
+#artist-td {
+    width: 60%;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+#album-button {
+    width: 100%;
+    height: auto;
+    margin: 5px;
+    color: white;
+    font-size: 1.3em;
+    background-color: rgb(85, 123, 206);
+}
+
+#primary-button:hover {
+    background-color: rgb(76, 144, 175);
+    color: rgb(255, 255, 255);
+}
+
+#primary-button {
+    width: auto;
+    height: 40px;
+    background-color: rgb(139, 96, 150);
+    border: none;
+    color: white;
+    border-radius: 5%;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    transition-duration: 0.4s;
+}
+
+#img-playlist {
+    height: 50px;
+    width: 75px;
+}
+
+input {
+    width: 60%;
+    height: 10px;
+    padding: 15px 32px;
+    border-color: blue;
+    border-radius: 5%;
+    display: inline-block;
+    text-align: center;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#main {
+    margin: 0 auto;
+    padding-top: 6px;
+    width: 90%;
+    height: 240px;
+    margin-bottom: 0;
+}
+
+#header {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+}
+
+#menu {
+    display: block;
+    width: 100%;
+    height: 38px;
+    background-color: blue;
+}
+
+#menu a {
+    float: right;
+    font-size: 1.4em;
+    color: #fff;
+    font-weight: bold;
+    background-color: blue;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 28px;
+    padding-top: 10px;
+}
+
+#menu a:hover {
+    background-color: url(../imaes/nav_bg.gif) repeat-x;
+    color: #96ED00;
+}
+
+#header-Bottom {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    clear: both;
+}
+
+#logoBlock {
+    float: left;
+    width: 255px;
+    padding-left: 135px;
+    padding-top: 10px;
+    height: 79px;
+}
+
+#logoBlock h1 {
+    font-weight: bold;
+    font-family: "Trebuchet MS";
+    color: #fff;
+    font-size: 41px;
+    margin: 0;
+    line-height: 1.0em;
+}
+
+#logoBlock p {
+    margin: 0;
+    color: white;
+    font-family: "Trebuchet MS";
+    line-height: 1.2em;
+    font-size: 14px;
+}
+
+#searchBlock {
+    display: block;
+    float: left;
+    width: 50%;
+    padding-left: 26px;
+    padding-top: 5px;
+    height: 120px;
+}
+
+#searchform {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 90px 0 0 150px;
+    line-height: 1.5em;
+}
+
+#searchBlock h3 {
+    display: block;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5em;
+}
+
+#main {
+    margin: 0 auto;
+    padding-top: 6px;
+    width: 90%;
+    height: 240px;
+    margin-bottom: 0;
+}
+
+#mainCont {
+    width: 90%;
+    clear: both;
+    background-color: rgb(210, 102, 231);
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 0;
+    height: auto;
+}
+
+#leftCol {
+    display: block;
+    margin: 0;
+    float: left;
+    width: 366px;
+    padding-bottom: 10px;
+    height: auto;
+}
+
+#leftColalbum {
+    display: block;
+    margin: 0;
+    float: left;
+    width: 60%;
+    padding-bottom: 10px;
+    height: auto;
+}
+
+#centrCol {
+    display: block;
+    margin: 0;
+    float: left;
+    width: 342px;
+    padding-bottom: 10px;
+    height: auto;
+    padding-left: 10px;
+}
+
+#rightCol {
+    display: block;
+    margin: 0;
+    float: left;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    height: auto;
+    width: 420px;
+}
+
+#welcomeBox {
+    margin: 0;
+    padding-right: 5px;
+}
+
+#welcomeBox h3 {
+    font-family: "Trebuchet MS";
+    color: #9B9B9B;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+    line-height: normal;
+}
+
+#welcomeBox p {
+    color: #4D4D4D;
+    line-height: normal;
+    margin: 0;
+    text-align: justify;
+}
+
+#welcomeBox p span {
+    color: #919191;
+}
+
+#welcomeBox h5 {
+    color: #919191;
+    font-weight: bold;
+    margin: 0;
+    line-height: normal;
+    font-size: 11px;
+    padding-top: 6px;
+}
+
+#playListTop {
+    display: block;
+    padding-top: 20px;
+    margin: 0;
+}
+
+#playListTop h3 {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    height: 24px;
+    width: 93%;
+    margin: 0;
+    padding-left: 30px;
+    padding-top: 8px;
+    background-color: blue;
+}
+
+#leftColalbum #playListBody {
+    display: block;
+    margin: 0;
+    border-left: solid 1px #40434A;
+    border-right: solid 1px #40434A;
+    border-bottom: solid 1px #40434A;
+    padding-bottom: 5px;
+    height: auto;
+    width: 96%;
+}
+
+#playListBody {
+    display: block;
+    margin: 0;
+    border-left: solid 1px #40434A;
+    border-right: solid 1px #40434A;
+    border-bottom: solid 1px #40434A;
+    padding-bottom: 5px;
+    height: auto;
+    width: 100%;
+}
+
+.head {
+    height: 20px;
+    width: 365px;
+}
+
+.head p {
+    font-size: 12px;
+    font-weight: bold;
+    color: #DBDBDB;
+    margin: 0;
+    padding-left: 12px;
+    padding-top: 5px;
+    float: left;
+}
+
+.head p.left {
+    width: auto;
+}
+
+.head p.centr {
+    width: 176px;
+    border-left: solid 1px #40434A;
+}
+
+.head p.right {
+    width: 100px;
+    border-left: solid 1px #40434A;
+}
+
+#playListDark {
+    display: block;
+    height: auto;
+    font-size: 16px;
+    color: white;
+    width: 365px;
+}
+
+li {
+    color: white;
+    font-size: 16px;
+    padding-top: 3px;
+    width: auto;
+}
+
+#playListDark p {
+    margin: 0;
+    height: auto;
+    float: left;
+    background-color: #5a7ae4;
+}
+
+#playListDark p #play {
+    background-color: #81CB02;
+    width: auto;
+}
+
+#playListDark p #track {
+    width: auto;
+    padding-left: 12px;
+}
+
+#playListDark p #artist {
+    width: 104px;
+    padding-left: 12px;
+}
+
+.playListLight {
+    height: 20px;
+    width: 365px;
+}
+
+.playListLight p {
+    color: #B3B3B3;
+    margin: 0;
+    height: 20px;
+    float: left;
+    padding-top: 3px;
+    width: 365px;
+}
+
+.playListLight p.play {
+    background-color: lightsalmon;
+    width: 62px;
+}
+
+.playListLight p.track {
+    width: 175px;
+    border-left: solid 1px #40434A;
+    padding-left: 12px;
+}
+
+.playListLight p.artist {
+    width: 100px;
+    border-left: solid 1px #40434A;
+    padding-left: 12px;
+}
+
+#albmBlock {
+    display: block;
+    margin: 0;
+    padding-top: 20px;
+    border-left: solid 1px #40434A;
+    border-right: solid 1px #40434A;
+    border-bottom: solid 1px #40434A;
+    padding-bottom: 5px;
+    height: auto;
+    width: 100%;
+}
+
+#albmBox {
+    height: auto;
+}
+
+#topCont {
+    height: auto;
+}
+
+#topCont h1 {
+    margin: 0;
+    float: left;
+    padding: 7px;
+}
+
+#topCont a {
+    margin: 0;
+    float: left;
+    padding-top: 10px;
+    width: 135px;
+    line-height: normal;
+}
+
+#topCont a span {
+    color: #fff;
+    font-weight: normal;
+    margin: 0;
+    font-size: 18px;
+}
+
+#topCont a:hover {
+    color: rgb(53, 201, 151);
+}
+
+#videoBlock {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+#videoBlockTop {
+    display: block;
+    width: 303px;
+}
+
+#videoBlockTop h3 {
+    display: block;
+    color: #9B9B9B;
+    font-size: 12px;
+    font-weight: bold;
+    background: url(../images/feat_vid.gif) no-repeat;
+    width: 100%;
+    margin: 0;
+    height: 23px;
+    padding-left: 30px;
+    padding-top: 8px;
+}
+
+#videoBlockBody {
+    display: block;
+    margin: 0;
+    padding-top: 20px;
+    border-left: solid 1px #40434A;
+    border-right: solid 1px #40434A;
+    border-bottom: solid 1px #40434A;
+    padding-bottom: 5px;
+    height: auto;
+    width: 100%;
+}
+
+#ButtonAdd {
+    height: auto;
+    width: 25%;
+    padding: 15px 32px;
+    background-color: teal;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+}
+
+#videoBlockBody1 {
+    display: block;
+    margin: 0;
+    padding-top: 20px;
+    border-left: solid 1px #40434A;
+    border-right: solid 1px #40434A;
+    border-bottom: solid 1px #40434A;
+    padding-bottom: 5px;
+    height: auto;
+    width: 100%;
+}
+
+#vidBox {
+    display: block;
+    border-bottom: solid 1px rgb(73, 63, 214);
+    padding: 5px;
+    height: 50px;
+    width: 95%;
+    margin: 0;
+}
+
+#videoBlockBot {
+    background-color: rgb(0, 89, 255);
+    height: 30px;
+    width: 303px;
+    clear: both;
+    margin: 0;
+}
+
+#footer {
+    height: auto;
+    clear: both;
+    color: white;
+    margin: 0 auto;
+    background-color: blue;
+}
+
+.rights {
+    color: rgb(240, 239, 239);
+    padding: 10px 0 10px 0;
+    font: 1.2em sans-serif;
+    text-align: center;
+}
+
+.rights a:hover {
+    color: #b6b5db;
+    text-decoration: underline;
 }

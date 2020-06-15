@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Musicker</title>
+    <title>mediatypes</title>
     <link rel="stylesheet" href="./style.css">
     <script type="module">
         import { init } from './app/init.js'; window.onload = init;
@@ -15,8 +15,8 @@
 <body>
     <div id="main">
         <div id="header">
-            <div id="menu"> <a href="mediatypes.html">MEDIATYPE </a> <a href="tracks.html">ALL TRACKS</a><a href="playlists.html">PLAYLISTS </a> <a href="artists.html">ARTISTS</a> <a href="albums.html" id="albumslink">ALBUMS</a>
-                <a href="#">HOME</a>
+            <div id="menu"> <a href="#">MEDIATYPE </a> <a href="tracks.html">ALL TRACKS</a> <a href="playlists.html">PLAYLISTS </a> <a href="artists.html">ARTISTS</a> <a href="albums.html">ALBUMS</a>
+                <a href="index.html">HOME</a>
             </div>
             <div id="header-Bottom">
                 <div id="logoBlock">
@@ -26,7 +26,7 @@
 
                 <div id="searchBlock">
                     <div id="searchform">
-                        <label for="search"><h3><i>Search Track</i></h3></label><input type="text" id="trackname"><button id="primary-button" type="submit">Search</button>
+                        <label for="search"><h3><i>Search Media Types</i></h3></label><input type="text" id="trackname"><button id="primary-button" type="submit">Search</button>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
         <!--first col music list-->
         <div id="leftCol">
             <div id="playListTop">
-                <h3>All Songs</h3>
+                <h3>All Media -Types</h3>
             </div>
             <div id="playListBody">
                 <div class="head">
@@ -88,6 +88,20 @@
             trackSearch(trackId);
             e.preventDefault()
         });
+    /*  document.getElementById("artist_delete")
+         .addEventListener('click', (e) => {
+             const artistId = document.getElementById('artistid').value;
+             if (!artistId) {
+                 alert("Artist id is required");
+             }
+             artistDelete(artistId);
+             e.preventDefault()
+         });
+     //adding other buttons event listener
+     document.getElementById("albums").addEventListener("click", viewAlbums);
+     document.getElementById("playlists").addEventListener("click", viewPlaylists);
+     document.getElementById("mediatypes").addEventListener("click", viewMediatypes);
+     document.getElementById("tracks").addEventListener("click", viewTracks);*/
 </script>
 
 </html>
