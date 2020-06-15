@@ -16,7 +16,7 @@
 <body>
     <div id="main">
         <div id="header">
-            <div id="menu"> <a href="mediatypes.html">MEDIATYPE </a> <a href="tracks.html">ALL TRACKS</a> <a href="#">PLAYLISTS </a> <a href="artists.html">ARTISTS</a> <a href="albums.html">ALBUMS</a>
+            <div id="menu"> <a href="tracks.html">ALL TRACKS</a> <a href="#">PLAYLISTS </a> <a href="artists.html">ARTISTS</a> <a href="albums.html">ALBUMS</a>
                 <a href="index.html">HOME</a>
             </div>
             <div id="header-Bottom">
@@ -27,7 +27,7 @@
 
                 <div id="searchBlock">
                     <div id="searchform">
-                        <label for="search"><h3><i>Search PlayList</i></h3></label><input type="text" id="albumid"><button id="primary-button" type="submit">Search</button>
+                        <label for="search"><h3><i>Search PlayList</i></h3></label><input type="text" id="playlist_id"><button id="primary-button" type="submit">Search</button>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
         <div id="rightCol">
             <div id="videoBlock">
                 <div id="playListTop">
-                    <h3>Tracks On This Playlist </h3>
+                    <h3>Tracks from the Playlist </h3>
                 </div>
                 <div id="videoBlockBody">
                     <h3>choose from the left playlist to display tracks..</h3>
@@ -68,13 +68,45 @@
 
 <script>
     //event listeners for artist form
+    const root = document.getElementById('videoBlockBody');
+    root.innerHTML = "Create New Playlist here";
+    var x = document.createElement("FORM");
+    x.id = "myForm";
+    root.appendChild(x);
+    var y = document.createElement("INPUT");
+    y.id = "playlistid";
+    y.setAttribute("type", "text");
+
+
+    var yy = document.createElement("INPUT");
+    yy.id = "playlistname";
+    yy.setAttribute("type", "text");
+
+
+    document.getElementById("myForm").appendChild(y);
+    document.getElementById("myForm").appendChild(yy);
+    var z = document.createElement("BUTTON");
+    z.id = "ButtonPlaylist";
+    z.innerHTML = "Add";
+    document.getElementById("myForm").appendChild(z);
+
+    document.getElementById("ButtonPlaylist").addEventListener('click', (e) => {
+        const playlistId = document.getElementById('playlistid').value;
+        const trackname = document.getElementById('playlistname').value;
+        if ((playlistId === "") || (trackname === "")) {
+            alert("all fields are required");
+        }
+        createPlaylist(playlistId, trackname);
+        e.preventDefault()
+    });
+    //for the search field
     document.getElementById("primary-button")
         .addEventListener('click', (e) => {
-            const trackId = document.getElementById('albumid').value;
-            if (!trackId) {
-                alert("track name is required");
+            const playlistId = document.getElementById('playlist_id').value;
+            if (playlistId === "") {
+                alert("playlist id is required to search");
             }
-            albumSearch(trackId);
+            playlistSearch(playlistId);
             e.preventDefault()
         });
 

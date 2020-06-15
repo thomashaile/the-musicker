@@ -10,7 +10,6 @@ router.use('/albums', require('./albums'));
 router.use('/albumss', require('./albumss'));
 router.use('/artists', require('./artists'));
 router.use('/genres', require('./genres'));
-router.use('/media-types', require('./media-types'));
 router.use('/playlists', require('./playlists'));
 router.use('/playlists/list', require('./playlists'));
 router.use('/playlists/remove', require('./playlists'));

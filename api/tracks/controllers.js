@@ -5,7 +5,7 @@ const controllers = {
 
         const sql = `SELECT
         tracks.TrackId AS TrackId,tracks.Name AS TrackName,
-        albums.Title AS AlbumTitle,
+        albums.Title AS AlbumTitle,artists.ArtistId AS ArtistId,
         artists.Name AS ArtistName
     FROM
         tracks

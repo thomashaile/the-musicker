@@ -29,9 +29,7 @@ const controllers = {
     },
     getOne: (req, res) => {
         const id = req.params.id;
-        const sql = `
-                SELECT * FROM playlists WHERE PlaylistId = $ { id }
-                `;
+        const sql = `SELECT * FROM playlists WHERE PlaylistId = "${id}"`;
         db.all(sql, (err, rows) => {
             if (err) {
                 res.status(400).json({ "error": err.message });
@@ -42,33 +40,35 @@ const controllers = {
     },
     addTrack: (req, res) => {
         // read row data from body
-        const newList = req.body;
+        const id = Number(req.body.id);
+        const name = Number(req.body.name);
         const sql = `
-                INSERT INTO playlists(PlaylistId, TrackId)
-                VALUES($ {req}, '${newList.name}')
+                INSERT INTO playlist_track(PlaylistId, TrackId)
+                VALUES(${id}, ${name})
                 `;
         db.all(sql, (err, rows) => {
             if (err) {
                 res.status(400).json({ "error": err.message });
                 return;
             }
-            res.json("New play list created successfully...")
+            res.json("track added successfully...")
         });
     },
     create: (req, res) => {
         // read row data from body
-        const newList = req.body;
-        const sql = `
-                INSERT INTO playlists(PlaylistId, Name)
-                VALUES($ { newList.id }, '${newList.name}')
-                `;
+        const id = Number(req.body.id);
+        const name = req.body.name;
+        const sql = `INSERT INTO playlists(PlaylistId, Name)
+        VALUES(${id}, '${name}')`;
         db.all(sql, (err, rows) => {
             if (err) {
+                console.log(newList.name);
                 res.status(400).json({ "error": err.message });
                 return;
             }
-            res.json("New play list created successfully...")
-        });
+            res.json("Playlist added successfully...")
+
+        })
     },
     update: (req, res) => {
         // read row data from body

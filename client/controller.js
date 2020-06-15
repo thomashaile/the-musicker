@@ -48,7 +48,7 @@ const listPlaylists = async(req, res) => {
     const root = document.getElementById('playListBody');
     var str = "<table><tr><th id='track'>PlayList Id</th><th id='track'>PlayList Name</th><th id='artist'>Action</th></tr>";
     data.forEach(function(list) {
-        str += "<tr><td id='play'>" + JSON.stringify(list.PlaylistId) + "</td><td id='album-td'><button id='album-button' onclick='tracksByPlaylist(" + JSON.stringify(list.PlaylistId) + ")'>" + JSON.stringify(list.Name) + "</button></td><td id='artist-td'>" + "<button >Add Song</button><button onclick='deletePlaylist(" + JSON.stringify(list.PlaylistId) + ")'>Delete</button>" + "</td></tr>";
+        str += "<tr><td id='play'>" + JSON.stringify(list.PlaylistId) + "</td><td id='album-td'><button id='album-button' onclick='tracksByPlaylist(" + JSON.stringify(list.PlaylistId) + ")'>" + JSON.stringify(list.Name) + "</button></td><td id='artist-td'>" + "<button onclick='addToPlaylist(" + JSON.stringify(list.PlaylistId) + ")'>Add Song</button><button onclick='deletePlaylist(" + JSON.stringify(list.PlaylistId) + ")'>Delete</button>" + "</td></tr>";
     });
     str += '</table>';
     root.innerHTML = str;
@@ -63,6 +63,18 @@ const albumSearch = async(req, res) => {
     });
     str += '</table>';
     root.innerHTML = str;
+}
+const playlistSearch = async(req, res) => {
+    const result = await fetch('/api/playlists/' + req)
+    const data = await result.json();
+    const root = document.getElementById('playListBody');
+    var str = "<table><tr><th id='track'>PlayList Id</th><th id='track'>PlayList Name</th><th id='artist'>Action</th></tr>";
+    data.forEach(function(list) {
+        str += "<tr><td id='play'>" + JSON.stringify(list.PlaylistId) + "</td><td id='album-td'><button id='album-button' onclick='tracksByPlaylist(" + JSON.stringify(list.PlaylistId) + ")'>" + JSON.stringify(list.Name) + "</button></td><td id='artist-td'>" + "<button onclick='addToPlaylist(" + JSON.stringify(list.PlaylistId) + ")'>Add Song</button><button onclick='deletePlaylist(" + JSON.stringify(list.PlaylistId) + ")'>Delete</button>" + "</td></tr>";
+    });
+    str += '</table>';
+    root.innerHTML = str;
+    document.getElementById('playlist_id').value = "";
 }
 const tracksByAlbum = async(req, res) => {
 
@@ -92,53 +104,98 @@ const tracksByPlaylist = async(req, res) => {
         str += "<tr><td id='play'>" + JSON.stringify(list.TrackId) + "</td><td id='album-td'><button id='album-button'>" + JSON.stringify(list.TrackName) + "</button></td><td id='artist-td'>" + "<button onclick='removeSong(" + JSON.stringify(list.TrackId) + ")'>Remove Song</button>" + "</td></tr>";
     });
     str += '</table>';
+
     root.innerHTML = str;
-    console.log(data);
 
 }
 const albumsByArtist = async(req, res) => {
 
-        const result = await fetch('/api/albumss/' + req)
-        const data = await result.json();
-        const root = document.getElementById('videoBlockBody');
-        var str = "<table><tr><th id='track'>Album Id</th><th id='track'>Album Title</th><th id='artist'>Artist Id</th></tr>";
-        data.forEach(function(list) {
-            str += "<tr><td id='play'>" + JSON.stringify(list.AlbumId) + "</td><td id='album-td'><button id='album-button' onclick='tracksByAlbum(" + JSON.stringify(list.AlbumId) + ")'>" + JSON.stringify(list.Title) + "</button></td><td id='artist-td'>" + JSON.stringify(list.ArtistId) + "</td></tr>";
-        });
-        str += '</table>';
-        root.innerHTML = str;
-        // console.log(data);
+    const result = await fetch('/api/albumss/' + req)
+    const data = await result.json();
+    const root = document.getElementById('videoBlockBody');
+    var str = "<table><tr><th id='track'>Album Id</th><th id='track'>Album Title</th><th id='artist'>Artist Id</th></tr>";
+    data.forEach(function(list) {
+        str += "<tr><td id='play'>" + JSON.stringify(list.AlbumId) + "</td><td id='album-td'><button id='album-button' onclick='tracksByAlbum(" + JSON.stringify(list.AlbumId) + ")'>" + JSON.stringify(list.Title) + "</button></td><td id='artist-td'>" + JSON.stringify(list.ArtistId) + "</td></tr>";
+    });
+    str += '</table>';
+    root.innerHTML = str;
+    // console.log(data);
 
-    }
-    /*const addToPlaylist = async(req, res) => {
+}
+const addToPlaylist = async(req, res) => {
 
-        const root = document.getElementById('videoBlockBody');
-        root.innerHTML = "enter track id to add";
-        var x = document.createElement("FORM");
-        x.id = "myForm";
-        x.action = "/api/playlists/track";
-        x.method = "POST";
-        root.appendChild(x);
-        var yy = document.createElement("INPUT");
-        yy.id = "playid";
-        yy.innerHTML = req;
-        var y = document.createElement("INPUT");
-        y.id = "trackid";
-        //y.setAttribute("type", "text");
-        //y.setAttribute("value", "Track");
-        document.getElementById("myForm").appendChild(yy);
-        document.getElementById("myForm").appendChild(y);
-        var z = document.createElement("BUTTON");
-        z.id = "ButtonAdd";
-        z.innerHTML = "Add Song";
-        document.getElementById("myForm").appendChild(z);
-    }*/
+    const root = document.getElementById('videoBlockBody');
+    root.innerHTML = "enter track id to add";
+    var x = document.createElement("FORM");
+    x.id = "myForm";
+    root.appendChild(x);
+    var y = document.createElement("INPUT");
+    y.id = "trackid";
+    y.setAttribute("type", "text");
 
+
+    document.getElementById("myForm").appendChild(y);
+    var z = document.createElement("BUTTON");
+    z.id = "ButtonAdd";
+    z.innerHTML = "Add";
+    document.getElementById("myForm").appendChild(z);
+
+    document.getElementById("ButtonAdd").addEventListener('click', (e) => {
+        const trackId = document.getElementById('trackid').value;
+        if (!trackId) {
+            alert("track id is required");
+        }
+        saveToPlaylist(req, trackId);
+        e.preventDefault()
+    });
+
+}
+const createPlaylist = async(req, trackAdd) => {
+
+    let playlist = {
+        id: req,
+        name: 'trackAdd'
+    };
+
+    const result = await fetch('/api/playlists/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(playlist)
+    });
+    const data = await result.json();
+    document.getElementById('playlistid').value = "";
+    document.getElementById('playlistname').value = "";
+    listPlaylists();
+    alert(data);
+
+}
+const saveToPlaylist = async(req, trackAdd) => {
+    let playlist = {
+        id: req,
+        name: trackAdd
+    };
+
+    const result = await fetch('/api/playlists/track/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(playlist)
+    });
+    const data = await result.json();
+    document.getElementById('trackid').value = "";
+    listPlaylists();
+    alert(data);
+
+}
 const deletePlaylist = async(req, res) => {
     const result = await fetch('/api/playlists/remove/' + req, {
         method: 'DELETE'
     })
     const data = await result.json();
+    listPlaylists();
     alert(data);
 
 }
@@ -148,6 +205,7 @@ const removeSong = async(req, res) => {
     })
     const data = await result.json();
     alert(data);
+    listPlaylists();
 
 }
 const artistDelete = async(req, res) => {

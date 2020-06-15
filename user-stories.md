@@ -12,8 +12,6 @@ This file contains some possible user stories for The Musicker.  Feel free to pi
 - A user can see a list of all songs
 - A user can click on one song to see all the albums by that artist, with the songs for each album listed
 
-
-
 - A user can see a list of all playlists
 - A user can click on one playlist to see all songs in that playlist
 - A user can add or remove songs from an existing playlist
